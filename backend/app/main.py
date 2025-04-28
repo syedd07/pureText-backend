@@ -1,6 +1,7 @@
 import logging
 import sys
 import os
+import nltk
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -18,6 +19,19 @@ try:
     logger.info(f"Python version: {sys.version}")
     logger.info(f"Current working directory: {os.getcwd()}")
     logger.info(f"Files in current directory: {os.listdir('.')}")
+    
+    # Download NLTK data during startup
+    logger.info("Downloading required NLTK data...")
+    try:
+        nltk.download('punkt', quiet=False)
+        logger.info("Successfully downloaded 'punkt'")
+        nltk.download('stopwords', quiet=False)
+        logger.info("Successfully downloaded 'stopwords'")
+        nltk.download('wordnet', quiet=False)
+        logger.info("Successfully downloaded 'wordnet'")
+    except Exception as nltk_error:
+        logger.warning(f"NLTK download warning: {str(nltk_error)}")
+        logger.warning("Application will continue, but some NLP features may be limited")
     
     def create_application() -> FastAPI:
         logger.info("Creating FastAPI application...")
