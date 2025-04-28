@@ -18,7 +18,8 @@ def get_model():
     global _model
     if _model is None:
         print("Loading SBERT model - this may take a moment on first run...")
-        _model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
+        # Use a smaller model
+        _model = SentenceTransformer('paraphrase-MiniLM-L3-v2')  # Much smaller model
     return _model
 
 async def get_text_embedding(text: str) -> List[float]:
@@ -96,4 +97,3 @@ async def get_text_themes(text: str, max_themes: int = 3) -> List[str]:
     except Exception as e:
         print(f"Error identifying themes: {str(e)}")
         return ["general"]  # Fallback to a generic theme if error occurs
-    

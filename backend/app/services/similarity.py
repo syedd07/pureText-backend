@@ -38,7 +38,7 @@ def get_sentence_model():
     global sentence_model
     if sentence_model is None:
         # Use a smaller, faster model
-        sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
+        sentence_model = SentenceTransformer('paraphrase-MiniLM-L3-v2')
     return sentence_model
 
 async def detect_plagiarism(text: str, sources: List[Dict[str, Any]]) -> Dict[str, Any]:
@@ -212,4 +212,3 @@ async def split_into_sentences(text: str) -> List[str]:
         # Last resort: simple split
         sentences = re.split(r'[.!?]', text)
         return [s.strip() for s in sentences if s.strip()]
-    
