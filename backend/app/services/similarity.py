@@ -8,16 +8,11 @@ from app.services.scraping import scrape_content
 from sentence_transformers import SentenceTransformer
 import nltk
 
-# Comprehensive NLTK data download
+# Simplified NLTK data download
 try:
-    # Download both punkt and punkt_tab
     nltk.download('punkt')
-    # For punkt_tab specifically - this is what's missing
-    try:
-        nltk.download('punkt_tab')
-    except:
-        # If punkt_tab isn't available in the repository
-        print("Note: punkt_tab not available in standard NLTK repository, using punkt instead")
+    nltk.download('stopwords')
+    nltk.download('wordnet')
 except Exception as e:
     print(f"Warning: NLTK download failed: {str(e)}")
 
