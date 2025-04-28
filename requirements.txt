@@ -21,4 +21,5 @@ zyte-api==0.4.0
 
 # Utilities
 pydantic==1.10.8
+pydantic-settings==2.0.3
 nltk==3.8.1
