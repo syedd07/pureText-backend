@@ -13,7 +13,7 @@ httpx==0.24.0
 numpy==1.24.3
 sentence-transformers==2.2.2  # Add this - needed for embeddings
 --find-links https://download.pytorch.org/whl/torch_stable.html
-torch==2.0.0+cpu
+torch==2.0.0
 # faiss-cpu==1.7.4  # Add this but with a lightweight version
 
 # Web scraping
